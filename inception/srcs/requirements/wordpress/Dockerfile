@@ -6,7 +6,7 @@
 #    By: user <user@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/19 10:08:23 by user              #+#    #+#              #
-#    Updated: 2025/11/19 10:08:24 by user             ###   ########.fr        #
+#    Updated: 2025/11/19 16:24:14 by user             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,23 +14,17 @@ FROM alpine:3.18
 
 # Installer PHP et les extensions requises par WP
 RUN apk update && apk add --no-cache \
-    php8 \
-    php8-fpm \
-    php8-mysqli \
-    php8-pdo \
-    php8-pdo_mysql \
-    php8-json \
-    php8-openssl \
-    php8-curl \
-    php8-dom \
-    php8-exif \
-    php8-fileinfo \
-    php8-zip \
-    php8-mbstring \
-    php8-gd \
-    php8-session \
-    php8-tokenizer \
-    php8-xml \
+    php82 \
+    php82-fpm \
+    php82-mysqli \
+    php82-pdo_mysql \
+    php82-json \
+    php82-openssl \
+    php82-curl \
+    php82-zip \
+    php82-mbstring \
+    php82-gd \
+    php82-xml \
     curl \
     mariadb-client
 

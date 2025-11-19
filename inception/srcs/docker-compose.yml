@@ -1,13 +1,11 @@
-version: "3.8"
-
 services:
   mariadb:
-    build: ./srcs/requirements/mariadb
+    build: ./requirements/mariadb
     container_name: mariadb
     restart: unless-stopped
 
     env_file:
-      - ./srcs/.env
+      - ./.env
 
     environment:
       MYSQL_DATABASE: "${MYSQL_DATABASE}"
@@ -20,7 +18,7 @@ services:
       - db_root_password
 
     volumes:
-      -db_data:/var/lib/mysql
+      - db_data:/var/lib/mysql
 
     networks:
       - inception
@@ -29,12 +27,12 @@ services:
       - "3306"
 
   wordpress:
-    build: ./srcs/requirements/wordpress
+    build: ./requirements/wordpress
     container_name: wordpress
     restart: unless-stopped
 
     env_file:
-      - ./srcs/.env
+      - ./.env
 
     environment:
       WORDPRESS_DB_HOST: "${WORDPRESS_DB_HOST}"
@@ -45,7 +43,7 @@ services:
       WP_ADMIN_PASSWORD_FILE: "/run/secrets/wp_admin_password"
 
     secrets:
-      - db_pasword
+      - db_password
       - wp_admin_password
 
     volumes:
@@ -58,16 +56,16 @@ services:
       - mariadb
 
   nginx:
-    build: ./srcs/requirements/nginx
+    build: ./requirements/nginx
     container_name: nginx
     restart: unless-stopped
 
     env_file:
-      - ./srcs/.env
+      - ./.env
 
     volumes:
-      - wp-data:/var/www/html:ro
-      - ./srcs/requirements/nginx/conf:/etc/nginx/conf.d:ro
+      - wp_data:/var/www/html:ro
+      - ./requirements/nginx/conf:/etc/nginx/conf.d:ro
 
     ports:
       - "443:443"
@@ -88,8 +86,8 @@ networks:
 
 secrets:
   db_password:
-    file: ./secrets/db_password.txt
+    file: /home/user/inception/secrets/db_password.txt
   db_root_password:
-    file: ./secrets/db_root_password.txt
+    file: /home/user/inception/secrets/db_root_password.txt
   wp_admin_password:
-    file: ./secrets/wp_admin_password.txt
+    file: /home/user/inception/secrets/wp_admin_password.txt
