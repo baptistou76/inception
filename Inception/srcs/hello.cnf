@@ -1,0 +1,24 @@
+# === Domaine / URL ===
+DOMAIN_NAME=bcaumont.42.fr
+
+# === Base de données ===
+MYSQL_DATABASE=wordpress
+MYSQL_USER=wp_user
+
+# On utilise les fichiers secrets pour les mots de passe
+MYSQL_PASSWORD_FILE=/run/secrets/db_password
+MYSQL_ROOT_PASSWORD_FILE=/run/secrets/db_root_password
+WP_ADMIN_PASSWORD_FILE=/run/secrets/wp_admin_password
+
+# === Admin WordPress ===
+WP_ADMIN_USER=baptiste
+WP_ADMIN_EMAIL=bcaumont@student.42lehavre.fr
+WORDPRESS_DB_HOST=mariadb:3306
+
+# === Second utilisateur WordPress ===
+SECOND_USER=author1
+SECOND_USER_EMAIL=author1@bcaumont.42lehavre.fr
+SECOND_USER_PASSWORD_FILE=/run/secrets/wp_second_user_password
+
+# === Site ===
+SITE_TITLE="Inception"
